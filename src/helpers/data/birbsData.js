@@ -27,6 +27,8 @@ const getBirbById = (birbId) => axios.get(`${baseUrl}/birbs/${birbId}.json`);
 
 const createBirb = (newBirb) => axios.post(`${baseUrl}/birbs.json`, newBirb);
 
+const updateBirb = (birbId, updatedBirb) => axios.patch(`${baseUrl}/birbs/${birbId}.json`, updatedBirb);
+
 const deleteBirb = (birbId) => axios.delete(`${baseUrl}/birbs/${birbId}.json`);
 
-export default { getBirbsByUid, getBirbById, createBirb, deleteBirb };
+export default { getBirbsByUid, getBirbById, createBirb, deleteBirb, updateBirb };
