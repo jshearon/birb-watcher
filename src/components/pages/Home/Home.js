@@ -16,10 +16,21 @@ class Home extends React.Component {
       .catch((err) => console.error('get birbs broke', err));
   }
 
+  deleteBirb = (birbId) => {
+    birbsData.deleteBirb(birbId)
+      .then(() => {
+        birbsData.getBirbsByUid(authData.getUid())
+          .then((birbs) => this.setState({ birbs }));
+      })
+      .catch((err) => console.error(err));
+  }
+
   render() {
     const { birbs } = this.state;
 
-    const birbCards = birbs.map((birb) => <BirbCard key={birb.id} birb={birb}/>);
+    const birbCards = birbs.map((birb) => <BirbCard key={birb.id} birb={birb} deleteBirb={this.deleteBirb}/>);
+
+
 
     return (
       <div className="Home">
